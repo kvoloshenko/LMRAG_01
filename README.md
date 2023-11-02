@@ -1,18 +1,20 @@
 Приглашаю в Телеграм общаться по это теме: https://t.me/AiExp01
 
 # LMRAG_01
+RAG: Local LLM vs GPT-4
+
+## RAG (Retrieval-Augmented Generation)
+![jumpstart-fm-rag.jpg](Doc%2Fjumpstart-fm-rag.jpg)
+see original picture here: https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-customize-rag.html
 
 
-LM Studio: RAG (Retrieval-Augmented Generation) Local LLM vs GPT-4
+## Сравниваем: RAG на Local LLM vs GPT-4
 
 
-
-
-
-
-
-
-
+| Сервер   | Embeddings | LLM                                              |
+|----------| ------- |--------------------------------------------------|
+| ChatGPT  | OpenAIEmbeddings   | GPT-4                                            |
+| LM Studio| HuggingFaceEmbeddings с моделью 'sentence-transformers/all-MiniLM-L6-v2'| IlyaGusev/saiga_mistral_7b_gguf/model-q8_0.gguf  |
 
 
 ## LM Studio
