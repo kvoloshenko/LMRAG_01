@@ -20,6 +20,11 @@ see original picture here: https://docs.aws.amazon.com/sagemaker/latest/dg/jumps
 * Подбор Embeddings: https://huggingface.co/spaces/mteb/leaderboard
 * Подбор модели: https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
 
+см. результат в файле Doc\RAG.mhtml
+ 
+или в файле Doc\output_01.txt
+[output_01.txt](Doc%2Foutput_01.txt)
+
 ## LM Studio
 В качестве сервера с LLM (Large language model) используется продукт LM Studio: https://lmstudio.ai/
 

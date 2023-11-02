@@ -21,10 +21,11 @@ def results():
 def run_post():
     query_s = request.form['query_string']
     print(f'query={query_s}')
+    print('******* GPT *******')
     gpt_answer, gpt_message_content = rag_gpt.answer_user_question(query_s)
     print(gpt_answer)
 
-
+    print('******* LM Studio *******')
     lm_answer, lm_message_content = rag_lm.answer_user_question(query_s)
     print(lm_answer)
     return render_template('index.html',
