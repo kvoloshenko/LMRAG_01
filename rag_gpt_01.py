@@ -72,7 +72,7 @@ system = tls.load_text('Platon_Prompt_01.txt')
 
 def answer_user_question(topic):
     # Ищем реливантные вопросу чанки и формируем контент для модели, который будет подаваться в user
-    message_content = get_message_content(topic, index_db, k_num=2)
+    message_content = get_message_content(topic, index_db, k_num=3)
     # Делаем запрос в модель и получаем ответ модели
     answer = answer_index(system, topic, message_content, temp=0.2)
     return answer, message_content
