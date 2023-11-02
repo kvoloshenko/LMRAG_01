@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RAG (Retrieval-Augmented Generation)</title>
+<!--    подключение css-->
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css" >
+
+</head>
+<body class="p-3 mb-2 bg-light text-dark">
+    <div class="container">
+        <h1>RAG (Retrieval-Augmented Generation)</h1>
+        <form action="index.html" method="post">
+            <input type="text" name="query_string" value="" placeholder="строка ввода" class="form-control">
+            <br><br>
+            <p>
+                <input type="submit" value="Сгенерировать" class="btn btn-secondary">
+            </p>
+        </form>
+        <hr>
+        {% if gpt_message_content %}
+        <br><br>
+        <h1>GPT:</h1>
+        <h3>Релевантные чанки</h3>
+        <pre class="text-break">{{gpt_message_content}}</pre>
+        <br><br>
+        {% endif %}
+
+        {% if gpt_answer %}
+        <h3>Ответ</h3>
+        <p class="text-break">{{gpt_answer}}</p>
+        <br><br>
+        {% endif %}
+
+
+        {% if lm_message_content %}
+        <hr>
+        <br><br>
+        <h1>LM Studio:</h1>
+        <h3>Релевантные чанки</h3>
+        <pre class="text-break">{{lm_message_content}}</pre>
+        <br><br>
+        {% endif %}
+
+        {% if lm_answer %}
+        <h3>Ответ</h3>
+        <p class="text-break">{{lm_answer}}</p>
+        <br><br>
+        {% endif %}
+
+
+    </div>
+</body>
+</html>

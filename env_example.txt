@@ -1,0 +1,8 @@
+API_KEY = 'yor key value'            # Open AI API Key
+TOKEN = 'you Telegram token'         # Telegram token
+# LL_MODEL = "gpt-3.5-turbo-0301"     # Модель
+LL_MODEL = "gpt-3.5-turbo-0613"     # Модель
+# LL_MODEL = "gpt-3.5-turbo-16k-0613" # Модель
+# LL_MODEL = 'gpt-4'               # Модель
+# LL_MODEL = "gpt-3.5-turbo-16k"      # Модель
+# LL_MODEL = "gpt-3.5-turbo"          # Модель
