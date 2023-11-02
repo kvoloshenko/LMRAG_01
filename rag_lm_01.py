@@ -16,7 +16,8 @@ def create_index_db(database):
     for chunk in splitter.split_text(database):
       source_chunks.append(Document(page_content=chunk, metadata={}))
 
-    model_id = 'sentence-transformers/all-MiniLM-L6-v2'
+    # model_id = 'sentence-transformers/all-MiniLM-L6-v2'
+    model_id = 'intfloat/multilingual-e5-large'
     # model_kwargs = {'device': 'cpu'}
     model_kwargs = {'device': 'cuda'}
     embeddings = HuggingFaceEmbeddings(
