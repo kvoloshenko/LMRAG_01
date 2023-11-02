@@ -4,7 +4,7 @@
 RAG: Local LLM vs GPT-4
 
 ## RAG (Retrieval-Augmented Generation)
-![jumpstart-fm-rag.jpg](Doc%2Fjumpstart-fm-rag.jpg)
+![jumpstart-fm-rag_01.jpg](Doc%2Fjumpstart-fm-rag_01.jpg)
 see original picture here: https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-customize-rag.html
 
 
@@ -14,8 +14,11 @@ see original picture here: https://docs.aws.amazon.com/sagemaker/latest/dg/jumps
 | Сервер   | Embeddings | LLM                                              |
 |----------| ------- |--------------------------------------------------|
 | ChatGPT  | OpenAIEmbeddings   | GPT-4                                            |
-| LM Studio| HuggingFaceEmbeddings с моделью 'sentence-transformers/all-MiniLM-L6-v2'| IlyaGusev/saiga_mistral_7b_gguf/model-q8_0.gguf  |
+| LM Studio| HuggingFaceEmbeddings с моделью 'intfloat/multilingual-e5-large'| IlyaGusev/saiga_mistral_7b_gguf/model-q8_0.gguf  |
 
+***Notes:***
+* Подбор Embeddings: https://huggingface.co/spaces/mteb/leaderboard
+* Подбор модели: https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
 
 ## LM Studio
 В качестве сервера с LLM (Large language model) используется продукт LM Studio: https://lmstudio.ai/
