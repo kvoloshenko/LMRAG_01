@@ -34,6 +34,6 @@ def generate_response(prompt):
         return None
 
 if __name__ == '__main__':
-    topic ="Привет! Ты кто?"
+    topic ="Почему небо голубое?"
     answer = generate_response(topic)
     print(f'answer={answer}')
