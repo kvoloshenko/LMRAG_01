@@ -1,0 +1,37 @@
+https://github.com/kvoloshenko/LMRAG_01/blob/main/Flowise/RAG_Ollama_01%20Chatflow.json
+
+1.Document Loaders
+	Text File
+	C:\_AI\LMRAG_01\Platon_KnowledgeBase_01.txt
+	https://github.com/kvoloshenko/LMRAG_01/blob/main/Platon_KnowledgeBase_01.txt
+2. Text Splitters
+	Recursive Character Text Splitter
+3. Vector Sotres New
+	In-Memory Vector Store
+4. Embeddings
+	HuggingFace Inference Embeddings
+	intfloat/multilingual-e5-large
+5. Chains
+	Retrieval QA Chain
+6. LLMs 
+	HuggingFace Inference
+	IlyaGusev/saiga_mistral_7b_gguf
+
+FlowiseAI https://flowiseai.com/ 
+
+Flowise Github: https://github.com/FlowiseAI/Flowise 
+
+GitHub: https://github.com/kvoloshenko/LMRAG_01
+
+Ollama: Command line сервер для запуска локальных LLM: https://t.me/AiExp01/60
+
+Про настройку Ollama на Ubuntu: https://t.me/AiExp02/340
+
+Создание нейро-помощника без программирования: https://t.me/AiExp01/59
+
+Возможно ли жизнь без ChatGPT или как подобрать свою локальную языковую модель? https://t.me/AiExp01/57 
+
+Локальная модель openchat_3.5 + TextGen WebUI + OpenAI extensions: https://t.me/AiExp01/56
+
+Сравниваем: RAG на Local LLM vs GPT-4: https://t.me/AiExp01/52
+ 
