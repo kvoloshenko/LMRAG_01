@@ -1,0 +1,669 @@
+{
+  "nodes": [
+    {
+      "width": 300,
+      "height": 438,
+      "id": "textFile_0",
+      "position": {
+        "x": 447.30930565398114,
+        "y": 130.40369271618624
+      },
+      "type": "customNode",
+      "data": {
+        "id": "textFile_0",
+        "label": "Text File",
+        "version": 3,
+        "name": "textFile",
+        "type": "Document",
+        "baseClasses": [
+          "Document"
+        ],
+        "category": "Document Loaders",
+        "description": "Load data from text files",
+        "inputParams": [
+          {
+            "label": "Txt File",
+            "name": "txtFile",
+            "type": "file",
+            "fileType": ".txt, .html, .aspx, .asp, .cpp, .c, .cs, .css, .go, .h, .java, .js, .less, .ts, .php, .proto, .python, .py, .rst, .ruby, .rb, .rs, .scala, .sc, .scss, .sol, .sql, .swift, .markdown, .md, .tex, .ltx, .vb, .xml",
+            "id": "textFile_0-input-txtFile-file"
+          },
+          {
+            "label": "Metadata",
+            "name": "metadata",
+            "type": "json",
+            "optional": true,
+            "additionalParams": true,
+            "id": "textFile_0-input-metadata-json"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Text Splitter",
+            "name": "textSplitter",
+            "type": "TextSplitter",
+            "optional": true,
+            "id": "textFile_0-input-textSplitter-TextSplitter"
+          }
+        ],
+        "inputs": {
+          "textSplitter": "{{recursiveCharacterTextSplitter_0.data.instance}}",
+          "metadata": ""
+        },
+        "outputAnchors": [
+          {
+            "name": "output",
+            "label": "Output",
+            "type": "options",
+            "options": [
+              {
+                "id": "textFile_0-output-document-Document",
+                "name": "document",
+                "label": "Document",
+                "type": "Document"
+              },
+              {
+                "id": "textFile_0-output-text-string|json",
+                "name": "text",
+                "label": "Text",
+                "type": "string | json"
+              }
+            ],
+            "default": "document"
+          }
+        ],
+        "outputs": {
+          "output": "document"
+        },
+        "selected": false
+      },
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 447.30930565398114,
+        "y": 130.40369271618624
+      }
+    },
+    {
+      "width": 300,
+      "height": 429,
+      "id": "recursiveCharacterTextSplitter_0",
+      "position": {
+        "x": 72.45921234596051,
+        "y": 141.01338844861044
+      },
+      "type": "customNode",
+      "data": {
+        "id": "recursiveCharacterTextSplitter_0",
+        "label": "Recursive Character Text Splitter",
+        "version": 2,
+        "name": "recursiveCharacterTextSplitter",
+        "type": "RecursiveCharacterTextSplitter",
+        "baseClasses": [
+          "RecursiveCharacterTextSplitter",
+          "TextSplitter",
+          "BaseDocumentTransformer",
+          "Runnable"
+        ],
+        "category": "Text Splitters",
+        "description": "Split documents recursively by different characters - starting with \"\\n\\n\", then \"\\n\", then \" \"",
+        "inputParams": [
+          {
+            "label": "Chunk Size",
+            "name": "chunkSize",
+            "type": "number",
+            "default": 1000,
+            "optional": true,
+            "id": "recursiveCharacterTextSplitter_0-input-chunkSize-number"
+          },
+          {
+            "label": "Chunk Overlap",
+            "name": "chunkOverlap",
+            "type": "number",
+            "optional": true,
+            "id": "recursiveCharacterTextSplitter_0-input-chunkOverlap-number"
+          },
+          {
+            "label": "Custom Separators",
+            "name": "separators",
+            "type": "string",
+            "rows": 4,
+            "description": "Array of custom separators to determine when to split the text, will override the default separators",
+            "placeholder": "[\"|\", \"##\", \">\", \"-\"]",
+            "additionalParams": true,
+            "optional": true,
+            "id": "recursiveCharacterTextSplitter_0-input-separators-string"
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "chunkSize": 1000,
+          "chunkOverlap": "",
+          "separators": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "recursiveCharacterTextSplitter_0-output-recursiveCharacterTextSplitter-RecursiveCharacterTextSplitter|TextSplitter|BaseDocumentTransformer|Runnable",
+            "name": "recursiveCharacterTextSplitter",
+            "label": "RecursiveCharacterTextSplitter",
+            "type": "RecursiveCharacterTextSplitter | TextSplitter | BaseDocumentTransformer | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 72.45921234596051,
+        "y": 141.01338844861044
+      },
+      "dragging": false
+    },
+    {
+      "width": 300,
+      "height": 405,
+      "id": "memoryVectorStore_0",
+      "position": {
+        "x": 839.5576892470241,
+        "y": 361.18595798884735
+      },
+      "type": "customNode",
+      "data": {
+        "id": "memoryVectorStore_0",
+        "label": "In-Memory Vector Store",
+        "version": 1,
+        "name": "memoryVectorStore",
+        "type": "Memory",
+        "baseClasses": [
+          "Memory",
+          "VectorStoreRetriever",
+          "BaseRetriever"
+        ],
+        "category": "Vector Stores",
+        "description": "In-memory vectorstore that stores embeddings and does an exact, linear search for the most similar embeddings.",
+        "inputParams": [
+          {
+            "label": "Top K",
+            "name": "topK",
+            "description": "Number of top results to fetch. Default to 4",
+            "placeholder": "4",
+            "type": "number",
+            "optional": true,
+            "id": "memoryVectorStore_0-input-topK-number"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Document",
+            "name": "document",
+            "type": "Document",
+            "list": true,
+            "optional": true,
+            "id": "memoryVectorStore_0-input-document-Document"
+          },
+          {
+            "label": "Embeddings",
+            "name": "embeddings",
+            "type": "Embeddings",
+            "id": "memoryVectorStore_0-input-embeddings-Embeddings"
+          }
+        ],
+        "inputs": {
+          "document": [
+            "{{textFile_0.data.instance}}"
+          ],
+          "embeddings": "{{huggingFaceInferenceEmbeddings_0.data.instance}}",
+          "topK": ""
+        },
+        "outputAnchors": [
+          {
+            "name": "output",
+            "label": "Output",
+            "type": "options",
+            "options": [
+              {
+                "id": "memoryVectorStore_0-output-retriever-Memory|VectorStoreRetriever|BaseRetriever",
+                "name": "retriever",
+                "label": "Memory Retriever",
+                "type": "Memory | VectorStoreRetriever | BaseRetriever"
+              },
+              {
+                "id": "memoryVectorStore_0-output-vectorStore-Memory|VectorStore",
+                "name": "vectorStore",
+                "label": "Memory Vector Store",
+                "type": "Memory | VectorStore"
+              }
+            ],
+            "default": "retriever"
+          }
+        ],
+        "outputs": {
+          "output": "retriever"
+        },
+        "selected": false
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 839.5576892470241,
+        "y": 361.18595798884735
+      },
+      "dragging": false
+    },
+    {
+      "width": 300,
+      "height": 474,
+      "id": "huggingFaceInferenceEmbeddings_0",
+      "position": {
+        "x": 400.68579348939136,
+        "y": 597.8676354009235
+      },
+      "type": "customNode",
+      "data": {
+        "id": "huggingFaceInferenceEmbeddings_0",
+        "label": "HuggingFace Inference Embeddings",
+        "version": 1,
+        "name": "huggingFaceInferenceEmbeddings",
+        "type": "HuggingFaceInferenceEmbeddings",
+        "baseClasses": [
+          "HuggingFaceInferenceEmbeddings",
+          "Embeddings"
+        ],
+        "category": "Embeddings",
+        "description": "HuggingFace Inference API to generate embeddings for a given text",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "huggingFaceApi"
+            ],
+            "id": "huggingFaceInferenceEmbeddings_0-input-credential-credential"
+          },
+          {
+            "label": "Model",
+            "name": "modelName",
+            "type": "string",
+            "description": "If using own inference endpoint, leave this blank",
+            "placeholder": "sentence-transformers/distilbert-base-nli-mean-tokens",
+            "optional": true,
+            "id": "huggingFaceInferenceEmbeddings_0-input-modelName-string"
+          },
+          {
+            "label": "Endpoint",
+            "name": "endpoint",
+            "type": "string",
+            "placeholder": "https://xyz.eu-west-1.aws.endpoints.huggingface.cloud/sentence-transformers/all-MiniLM-L6-v2",
+            "description": "Using your own inference endpoint",
+            "optional": true,
+            "id": "huggingFaceInferenceEmbeddings_0-input-endpoint-string"
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "modelName": "intfloat/multilingual-e5-large",
+          "endpoint": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "huggingFaceInferenceEmbeddings_0-output-huggingFaceInferenceEmbeddings-HuggingFaceInferenceEmbeddings|Embeddings",
+            "name": "huggingFaceInferenceEmbeddings",
+            "label": "HuggingFaceInferenceEmbeddings",
+            "type": "HuggingFaceInferenceEmbeddings | Embeddings"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 400.68579348939136,
+        "y": 597.8676354009235
+      },
+      "dragging": false
+    },
+    {
+      "width": 300,
+      "height": 280,
+      "id": "retrievalQAChain_0",
+      "position": {
+        "x": 1550.730208706286,
+        "y": 712.7864967943137
+      },
+      "type": "customNode",
+      "data": {
+        "id": "retrievalQAChain_0",
+        "label": "Retrieval QA Chain",
+        "version": 1,
+        "name": "retrievalQAChain",
+        "type": "RetrievalQAChain",
+        "baseClasses": [
+          "RetrievalQAChain",
+          "BaseChain",
+          "Runnable"
+        ],
+        "category": "Chains",
+        "description": "QA chain to answer a question based on the retrieved documents",
+        "inputParams": [],
+        "inputAnchors": [
+          {
+            "label": "Language Model",
+            "name": "model",
+            "type": "BaseLanguageModel",
+            "id": "retrievalQAChain_0-input-model-BaseLanguageModel"
+          },
+          {
+            "label": "Vector Store Retriever",
+            "name": "vectorStoreRetriever",
+            "type": "BaseRetriever",
+            "id": "retrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever"
+          }
+        ],
+        "inputs": {
+          "model": "{{ollama_0.data.instance}}",
+          "vectorStoreRetriever": "{{memoryVectorStore_0.data.instance}}"
+        },
+        "outputAnchors": [
+          {
+            "id": "retrievalQAChain_0-output-retrievalQAChain-RetrievalQAChain|BaseChain|Runnable",
+            "name": "retrievalQAChain",
+            "label": "RetrievalQAChain",
+            "type": "RetrievalQAChain | BaseChain | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1550.730208706286,
+        "y": 712.7864967943137
+      },
+      "dragging": false
+    },
+    {
+      "width": 300,
+      "height": 578,
+      "id": "ollama_0",
+      "position": {
+        "x": 1198.6977087642078,
+        "y": 133.47844436303694
+      },
+      "type": "customNode",
+      "data": {
+        "id": "ollama_0",
+        "label": "Ollama",
+        "version": 2,
+        "name": "ollama",
+        "type": "Ollama",
+        "baseClasses": [
+          "Ollama",
+          "LLM",
+          "BaseLLM",
+          "BaseLanguageModel",
+          "Runnable"
+        ],
+        "category": "LLMs",
+        "description": "Wrapper around open source large language models on Ollama",
+        "inputParams": [
+          {
+            "label": "Base URL",
+            "name": "baseUrl",
+            "type": "string",
+            "default": "http://localhost:11434",
+            "id": "ollama_0-input-baseUrl-string"
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "string",
+            "placeholder": "llama2",
+            "id": "ollama_0-input-modelName-string"
+          },
+          {
+            "label": "Temperature",
+            "name": "temperature",
+            "type": "number",
+            "description": "The temperature of the model. Increasing the temperature will make the model answer more creatively. (Default: 0.8). Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 0.1,
+            "default": 0.9,
+            "optional": true,
+            "id": "ollama_0-input-temperature-number"
+          },
+          {
+            "label": "Top P",
+            "name": "topP",
+            "type": "number",
+            "description": "Works together with top-k. A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text. (Default: 0.9). Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-topP-number"
+          },
+          {
+            "label": "Top K",
+            "name": "topK",
+            "type": "number",
+            "description": "Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40). Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-topK-number"
+          },
+          {
+            "label": "Mirostat",
+            "name": "mirostat",
+            "type": "number",
+            "description": "Enable Mirostat sampling for controlling perplexity. (default: 0, 0 = disabled, 1 = Mirostat, 2 = Mirostat 2.0). Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-mirostat-number"
+          },
+          {
+            "label": "Mirostat ETA",
+            "name": "mirostatEta",
+            "type": "number",
+            "description": "Influences how quickly the algorithm responds to feedback from the generated text. A lower learning rate will result in slower adjustments, while a higher learning rate will make the algorithm more responsive. (Default: 0.1) Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-mirostatEta-number"
+          },
+          {
+            "label": "Mirostat TAU",
+            "name": "mirostatTau",
+            "type": "number",
+            "description": "Controls the balance between coherence and diversity of the output. A lower value will result in more focused and coherent text. (Default: 5.0) Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-mirostatTau-number"
+          },
+          {
+            "label": "Context Window Size",
+            "name": "numCtx",
+            "type": "number",
+            "description": "Sets the size of the context window used to generate the next token. (Default: 2048) Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-numCtx-number"
+          },
+          {
+            "label": "Number of GQA groups",
+            "name": "numGqa",
+            "type": "number",
+            "description": "The number of GQA groups in the transformer layer. Required for some models, for example it is 8 for llama2:70b. Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-numGqa-number"
+          },
+          {
+            "label": "Number of GPU",
+            "name": "numGpu",
+            "type": "number",
+            "description": "The number of layers to send to the GPU(s). On macOS it defaults to 1 to enable metal support, 0 to disable. Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-numGpu-number"
+          },
+          {
+            "label": "Number of Thread",
+            "name": "numThread",
+            "type": "number",
+            "description": "Sets the number of threads to use during computation. By default, Ollama will detect this for optimal performance. It is recommended to set this value to the number of physical CPU cores your system has (as opposed to the logical number of cores). Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-numThread-number"
+          },
+          {
+            "label": "Repeat Last N",
+            "name": "repeatLastN",
+            "type": "number",
+            "description": "Sets how far back for the model to look back to prevent repetition. (Default: 64, 0 = disabled, -1 = num_ctx). Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-repeatLastN-number"
+          },
+          {
+            "label": "Repeat Penalty",
+            "name": "repeatPenalty",
+            "type": "number",
+            "description": "Sets how strongly to penalize repetitions. A higher value (e.g., 1.5) will penalize repetitions more strongly, while a lower value (e.g., 0.9) will be more lenient. (Default: 1.1). Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-repeatPenalty-number"
+          },
+          {
+            "label": "Stop Sequence",
+            "name": "stop",
+            "type": "string",
+            "rows": 4,
+            "placeholder": "AI assistant:",
+            "description": "Sets the stop sequences to use. Use comma to seperate different sequences. Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-stop-string"
+          },
+          {
+            "label": "Tail Free Sampling",
+            "name": "tfsZ",
+            "type": "number",
+            "description": "Tail free sampling is used to reduce the impact of less probable tokens from the output. A higher value (e.g., 2.0) will reduce the impact more, while a value of 1.0 disables this setting. (Default: 1). Refer to <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">docs</a> for more details",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "ollama_0-input-tfsZ-number"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "optional": true,
+            "id": "ollama_0-input-cache-BaseCache"
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "baseUrl": "http://192.168.0.108:11434",
+          "modelName": "saiga_mistral_7b",
+          "temperature": 0.9,
+          "topP": "",
+          "topK": "",
+          "mirostat": "",
+          "mirostatEta": "",
+          "mirostatTau": "",
+          "numCtx": "",
+          "numGqa": "",
+          "numGpu": "",
+          "numThread": "",
+          "repeatLastN": "",
+          "repeatPenalty": "",
+          "stop": "",
+          "tfsZ": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "ollama_0-output-ollama-Ollama|LLM|BaseLLM|BaseLanguageModel|Runnable",
+            "name": "ollama",
+            "label": "Ollama",
+            "type": "Ollama | LLM | BaseLLM | BaseLanguageModel | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1198.6977087642078,
+        "y": 133.47844436303694
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "recursiveCharacterTextSplitter_0",
+      "sourceHandle": "recursiveCharacterTextSplitter_0-output-recursiveCharacterTextSplitter-RecursiveCharacterTextSplitter|TextSplitter|BaseDocumentTransformer|Runnable",
+      "target": "textFile_0",
+      "targetHandle": "textFile_0-input-textSplitter-TextSplitter",
+      "type": "buttonedge",
+      "id": "recursiveCharacterTextSplitter_0-recursiveCharacterTextSplitter_0-output-recursiveCharacterTextSplitter-RecursiveCharacterTextSplitter|TextSplitter|BaseDocumentTransformer|Runnable-textFile_0-textFile_0-input-textSplitter-TextSplitter",
+      "data": {
+        "label": ""
+      }
+    },
+    {
+      "source": "textFile_0",
+      "sourceHandle": "textFile_0-output-document-Document",
+      "target": "memoryVectorStore_0",
+      "targetHandle": "memoryVectorStore_0-input-document-Document",
+      "type": "buttonedge",
+      "id": "textFile_0-textFile_0-output-document-Document-memoryVectorStore_0-memoryVectorStore_0-input-document-Document",
+      "data": {
+        "label": ""
+      }
+    },
+    {
+      "source": "huggingFaceInferenceEmbeddings_0",
+      "sourceHandle": "huggingFaceInferenceEmbeddings_0-output-huggingFaceInferenceEmbeddings-HuggingFaceInferenceEmbeddings|Embeddings",
+      "target": "memoryVectorStore_0",
+      "targetHandle": "memoryVectorStore_0-input-embeddings-Embeddings",
+      "type": "buttonedge",
+      "id": "huggingFaceInferenceEmbeddings_0-huggingFaceInferenceEmbeddings_0-output-huggingFaceInferenceEmbeddings-HuggingFaceInferenceEmbeddings|Embeddings-memoryVectorStore_0-memoryVectorStore_0-input-embeddings-Embeddings",
+      "data": {
+        "label": ""
+      }
+    },
+    {
+      "source": "memoryVectorStore_0",
+      "sourceHandle": "memoryVectorStore_0-output-retriever-Memory|VectorStoreRetriever|BaseRetriever",
+      "target": "retrievalQAChain_0",
+      "targetHandle": "retrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever",
+      "type": "buttonedge",
+      "id": "memoryVectorStore_0-memoryVectorStore_0-output-retriever-Memory|VectorStoreRetriever|BaseRetriever-retrievalQAChain_0-retrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever",
+      "data": {
+        "label": ""
+      }
+    },
+    {
+      "source": "ollama_0",
+      "sourceHandle": "ollama_0-output-ollama-Ollama|LLM|BaseLLM|BaseLanguageModel|Runnable",
+      "target": "retrievalQAChain_0",
+      "targetHandle": "retrievalQAChain_0-input-model-BaseLanguageModel",
+      "type": "buttonedge",
+      "id": "ollama_0-ollama_0-output-ollama-Ollama|LLM|BaseLLM|BaseLanguageModel|Runnable-retrievalQAChain_0-retrievalQAChain_0-input-model-BaseLanguageModel",
+      "data": {
+        "label": ""
+      }
+    }
+  ]
+}
