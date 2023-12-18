@@ -1,0 +1,5 @@
+"model_rating";"model_name"
+"5";"intfloat/multilingual-e5-large"
+"1";"sentence-transformers/all-MiniLM-L6-v2"
+"1";"sentence-transformers/all-mpnet-base-v2"
+"5";"cointegrated/rubert-tiny2"
