@@ -1,8 +1,8 @@
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 from dotenv import load_dotenv
 import os
-import rag_gpt_01 as rag_gpt
-# import rag_lm_01 as rag_lm
+# import rag_gpt_01 as rag_gpt # For ChatGPT
+import rag_lm_01 as rag_lm # For LM Studio or TextGen WebUI
 
 # возьмем переменные окружения из .env
 load_dotenv()
@@ -31,7 +31,9 @@ async def text(update, context):
 
     chat_type = update.message.chat.type
 
-    reply_text, gpt_message_content = rag_gpt.answer_user_question(topic)
+    # reply_text, gpt_message_content = rag_gpt.answer_user_question(topic) # For ChatGPT
+    reply_text, gpt_message_content = rag_lm.answer_user_question(topic)  # For LM Studio or TextGen WebUI
+
 
     await update.message.reply_text(f'{reply_text}')
 

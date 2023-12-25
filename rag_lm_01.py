@@ -39,7 +39,8 @@ def get_message_content(topic, index_db, k_num):
 # Функция отправки запроса в модель и получения ответа от модели
 def answer_index(system, topic, message_content, temp):
     openai.api_type = "open_ai"
-    openai.api_base = "http://localhost:1234/v1"
+    # openai.api_base = "http://localhost:1234/v1" #URL for LM Studio
+    openai.api_base = "http://localhost:5000/v1"  # URL for TextGen WebUI
     openai.api_key = "no need anymore"
 
     messages = [
