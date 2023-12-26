@@ -46,7 +46,6 @@ def main():
     # точка входа в приложение
     application = Application.builder().token(TOKEN).build()
     print('Бот запущен..!')
-    # logging.info(LOG_S)
 
     # добавляем обработчик команды /start
     application.add_handler(CommandHandler("start", start))
@@ -58,7 +57,7 @@ def main():
     application.run_polling()
 
     print('Бот остановлен..!')
-    logging.info(LOG_E)
+
 
 
 
